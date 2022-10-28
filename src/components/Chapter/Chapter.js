@@ -8,17 +8,14 @@ import appContext from '../../context/context'
 
 const Chapter = () => {
     const params = useParams()
-    const setCurrentChapter = useContext(appContext).setCurrentChapter
-
-    useEffect(() => {
-        setCurrentChapter(params.chapter)
-    }, [params])
+    
 
     return (
         <div>
-            <h1>
+            <h1 className='heading'>
                 HTML - {params.chapter}
             </h1>
+            <button className='btn try'>Try Code Editor</button>
         </div>
     )
 }

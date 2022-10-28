@@ -1,0 +1,9 @@
+.Home{
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Home p{
+    margin: 20px 0px;
+}
+

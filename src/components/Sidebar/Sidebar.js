@@ -9,6 +9,7 @@ const Sidebar = () => {
 
     const navigateTo = useNavigate()
     let currentChapter = useContext(appContext).currentChapter
+    let setCurrentChapter = useContext(appContext).setCurrentChapter
 
     const chapters = [
         {
@@ -34,7 +35,10 @@ const Sidebar = () => {
         <div className={showSideBar ? 'Sidebar' : 'Sidebar hidden'}>
             {/* <div className='Sidebar hidden'> */}
             <div className='Sidebar-head'>
-                <h2 className='Sidebar-heading'>HTML Tags</h2>
+                <h2 className='Sidebar-heading' onClick={() => {
+                    setCurrentChapter('home')
+                    navigateTo('/')
+                }}>HTML Tags</h2>
 
                 <div className='burger' onClick={() => { setShowSideBar(!showSideBar) }}>
                     <div className='burger-bar'></div>
@@ -49,6 +53,7 @@ const Sidebar = () => {
                             return <li className={currentChapter == chapter.id ? 'Chapter current' : 'Chapter'}
                                 key={chapter.id}
                                 onClick={() => {
+                                    setCurrentChapter(chapter.id)
                                     navigateTo('/learn/' + chapter.id)
                                 }}
                             >{chapter.name} - Tag</li>
