@@ -1,0 +1,79 @@
+.Sidebar{
+    min-width: 250px;
+    height: 80vh;
+    background-color: #F6FAFE;
+
+}
+
+.hidden{
+    min-width: 55px;
+    overflow: hidden;
+}
+
+.hidden .Sidebar-chapters, .hidden h2{
+    display: none;
+}
+
+.Sidebar-head{
+    padding: 15px;
+    border-bottom:2px solid #670099 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Sidebar-chapters{
+    height: 100%;
+    overflow: scroll;
+}
+
+.Sidebar-chapters::-webkit-scrollbar{
+    width: 5px;
+    height: 0px;
+    background-color: white;
+}
+
+.Sidebar-chapters::-webkit-scrollbar-thumb{
+    background-color: #670099;
+    border-radius: 20px;
+}
+
+.Chapter{
+    font-size: 20px;
+    list-style: none;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.Chapter:hover{
+    background-color: #66009959;
+    color: white;
+}
+
+.current{
+    background-color: #670099 !important;
+    color: white;
+    font-weight: bold;
+}
+
+.burger{
+    width: 25px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+.burger:hover{
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.burger-bar{
+    height: 4px;
+    width: 100%;
+    background-color: #670099;
+    border-radius: 10px;
+}
