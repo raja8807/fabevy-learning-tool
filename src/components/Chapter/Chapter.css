@@ -1,0 +1,21 @@
+
+.syntax-box{
+    background-color: #F6FAFE;
+    /* padding: 15px 0px; */
+}
+
+.Current-chapter-definition{
+    margin: 15px 0px;
+}
+
+.syntax{
+    display: block;
+    background-color: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.Current-chapter-container{
+    padding: 15px;
+}

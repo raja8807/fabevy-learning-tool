@@ -4,6 +4,8 @@ import './Home.css'
 const Home = () => {
   return (
     <div className='Home flex'>
+      
+      <div className='Current-chapter-container'>
       <h1 className='heading'>HTML Tags</h1>
       <p>
         HTML tags are like keywords which defines that how web browser will
@@ -25,6 +27,7 @@ const Home = () => {
       </p>
 
       <button className='btn try'>Try Code Editor</button>
+      </div>
 
     </div>
   )

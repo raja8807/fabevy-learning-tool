@@ -10,24 +10,8 @@ const Sidebar = () => {
     const navigateTo = useNavigate()
     let currentChapter = useContext(appContext).currentChapter
     let setCurrentChapter = useContext(appContext).setCurrentChapter
+    let chapters = useContext(appContext).chapters
 
-    const chapters = [
-        {
-            id: "a-tag",
-            name: "<a>",
-
-        },
-        {
-            id: "p-tag",
-            name: "<p>",
-
-        },
-        {
-            id: "div-tag",
-            name: "<div>",
-
-        }
-    ]
 
     const [showSideBar, setShowSideBar] = useState(true)
 
@@ -45,18 +29,19 @@ const Sidebar = () => {
                     <div className='burger-bar'></div>
                     <div className='burger-bar'></div>
                 </div>
+                
             </div>
             <div className='Sidebar-chapters'>
                 <ol>
                     {
                         chapters.map((chapter) => {
-                            return <li className={currentChapter == chapter.id ? 'Chapter current' : 'Chapter'}
+                            return <li className={currentChapter.id == chapter.id ? 'Chapter current' : 'Chapter'}
                                 key={chapter.id}
                                 onClick={() => {
-                                    setCurrentChapter(chapter.id)
+                                    setCurrentChapter(chapter)
                                     navigateTo('/learn/' + chapter.id)
                                 }}
-                            >{chapter.name} - Tag</li>
+                            >{chapter.tag} - Tag</li>
                         })
                     }
                 </ol>
