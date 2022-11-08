@@ -10,21 +10,26 @@
     
     "attributes" : [
       {
-        "attribute" : "src",
+        "attribute" : "attr1",
+        "value" : "value1",
         "usage" : "It is a necessary attribute that describes the source or path of the image. It instructs the browser where to look for the image on the server."
       },
       {
-        "attribute" : "alt",
-        "usage" : "The alt attribute defines an alternate text for the image, if it can't be displayed. The value of the alt attribute describe the image in words. The alt attribute is considered good for SEO prospective."
+        "attribute" : "attr2",
+        "value" : "value2",
+        "usage" : "It is a necessary attribute that describes the source or path of the image. It instructs the browser where to look for the image on the server."
       },
       {
-        "attribute" : "width",
-        "usage" : "It is an optional attribute which is used to specify the width to display the image. It is not recommended now. You should apply CSS in place of width attribute."
+        "attribute" : "attr3",
+        "value" : "value3",
+        "usage" : "It is a necessary attribute that describes the source or path of the image. It instructs the browser where to look for the image on the server."
       },
       {
-        "attribute" : "height",
-        "usage" : "It h3 the height of the image. The HTML height attribute also supports iframe, image and object elements. It is not recommended now. You should apply CSS in place of height attribute."
+        "attribute" : "attr4",
+        "value" : "value4",
+        "usage" : "It is a necessary attribute that describes the source or path of the image. It instructs the browser where to look for the image on the server."
       }
+      
     ]
 
   },

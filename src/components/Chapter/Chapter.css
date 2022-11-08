@@ -19,3 +19,26 @@
 .Current-chapter-container{
     padding: 15px;
 }
+
+.attributes-wrapper{
+    display: flex;
+}
+
+.attributes{
+    margin-right:20px ;
+    margin-top:10px ;
+    padding: 2px 20px;
+    border: 1px solid #670099;
+    background-color: #6600991c;
+    border-radius: 20px;
+    cursor: pointer;
+    /* background-color: white; */
+}
+
+.attributes:hover{
+    transform: scale(1.03);
+}
+
+.applied{
+    background-color: red;
+}
