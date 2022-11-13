@@ -5,50 +5,64 @@ import { useParams } from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react'
 import appContext from '../../context/context'
 
+import Attributes from './Attributes'
 
 const Chapter = () => {
     const params = useParams()
 
     let currentChapter = useContext(appContext).currentChapter
-
     const [syntax, setSyntax] = useState(currentChapter.syntax)
-    const [appliedAttributes, setAppliedAttributes] = useState([])
+    const [attributes, setAttributes] = useState([])
 
-    // let appliedAttributes = []
+    var x;
+
+    useEffect(() => {
+        x = ""
+        attributes.forEach((attribute) => {
+            x = x + ` ${attribute.attribute} = '${typeof attribute.value == 'string' ? attribute.value : attribute.value[0]}'`
+        })
+        let splitted = currentChapter.syntax.split(">")
+        let y = splitted[0] + x + ">" + splitted[1] + ">"
+        setSyntax(y)
+    }, [attributes])
 
 
-    function showAttr(attr) {
-        // let x =""
-        if (!appliedAttributes.includes(attr)) {
-            setAppliedAttributes((prev)=>{
-                return [...prev,attr]
-            })
-
-            // appliedAttributes.forEach((attribute)=>{
-            //     let y = currentChapter.attributes.find(a=> a.attribute == attribute)
-            //     x = x + `${attribute}='${y.value}' `
-            // })
-            let splitted = syntax.split(">")
-            let appliedAttribute = currentChapter.attributes.find((attribute) => {
-                return attribute.attribute == attr
-            })
-
-            let openingTag = `${splitted[0]} ${appliedAttribute.attribute} = '${appliedAttribute.value}>`
-            setSyntax(openingTag + splitted[1])
-            
-            // console.log(x);
-        }else{
-            setAppliedAttributes((prev)=>{
-                return prev.filter((attrb)=>{
-                    return attrb != attr
+    function addAttribute(attribute) {
+        let a = attributes.findIndex((attr) => {
+            return attribute.attribute == attr.attribute
+        })
+        if (a < 0) {
+            setAttributes(prev => [...prev, attribute])
+        } else {
+            setAttributes((prev) => {
+                return prev.filter((attr) => {
+                    return attribute.attribute != attr.attribute
                 })
             })
-            let splitted = syntax.split(">")
-            setSyntax(splitted[0].split(attr)[0]+">" + splitted[1]);
-            
-
         }
+
     }
+
+    function changeValue(attribute, value) {
+
+        let a = attributes.findIndex((attr) => {
+            return attribute.attribute === attr.attribute
+        })
+
+        let x = attributes[a]
+        x.value = value
+        setAttributes((prev) => {
+            let y = prev
+            y[a] = x
+         return [...y]
+        })
+
+    }
+
+
+
+
+
 
     return (
         <div className='Current-chapter'>
@@ -79,22 +93,21 @@ const Chapter = () => {
 
                     <button className='btn try'>Try Code Editor</button>
                 </div>
+            </div>
 
-                <h2>Attributes</h2>
-
-                <div className='attributes-wrapper'>
+            <div className='Current-chapter-container'>
+                <h2>
+                    Attributes
+                </h2>
+                <div className='flex attributes-wrapper'>
                     {
-                        currentChapter.attributes.map((attr, i) => {
-                            return <p key={i} className={appliedAttributes.includes(attr.attribute) ? "attributes applied" : "attributes"} onClick={() => {
-                                showAttr(attr.attribute)
-                            }}>{attr.attribute}</p>
+                        currentChapter.attributes.map((attribute, i) => {
+                            return <Attributes key={i} attribute={attribute} addAttribute={addAttribute} changeValue={changeValue} />
                         })
                     }
                 </div>
-
-
-
             </div>
+
         </div>
     )
 }
