@@ -1,0 +1,21 @@
+.out-box{
+    display: block;
+    background-color: white;
+    padding: 15px;
+    margin: 10px;
+    /* border-radius: 10px; */
+    max-width: 250px;
+    max-height: 250px;
+    overflow:scroll;
+}
+
+.out-box::-webkit-scrollbar{
+    width: 5px;
+    height: 0px;
+    background-color: white;
+}
+
+.out-box::-webkit-scrollbar-thumb{
+    background-color: #670099;
+    border-radius: 20px;
+}

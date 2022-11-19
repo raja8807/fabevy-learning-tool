@@ -38,8 +38,8 @@ const Sidebar = () => {
                             return <li className={currentChapter.id == chapter.id ? 'Chapter current' : 'Chapter'}
                                 key={chapter.id}
                                 onClick={() => {
-                                    setCurrentChapter(chapter)
                                     navigateTo('/learn/' + chapter.id)
+                                    setCurrentChapter(chapter)
                                 }}
                             >{chapter.tag} - Tag</li>
                         })

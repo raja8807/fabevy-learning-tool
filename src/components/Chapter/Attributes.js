@@ -3,15 +3,25 @@ import './Attributes.css'
 
 import { useState } from 'react'
 
-const Attributes = ({ attribute, addAttribute, changeValue }) => {
+const Attributes = ({ attribute, addAttribute, changeValue,removeAttribute }) => {
     
     const [expanded, setExpanded] = useState(false)
     const [value, setValue] = useState(attribute.value)
     const [currentAttribute, setCurrentAttribute] = useState({...attribute})
 
+
     const toogleExpand = () => {
         setExpanded(!expanded)
-        addAttribute(currentAttribute)
+        if(!expanded){
+            addAttribute(currentAttribute)
+        }else{
+            removeAttribute(currentAttribute)
+        }
+    }
+
+    function handleValue(e){
+        setValue(e.target.value)
+        changeValue(attribute, e.target.value)
     }
 
     return (
@@ -23,21 +33,15 @@ const Attributes = ({ attribute, addAttribute, changeValue }) => {
                 <>
                     <label>Value : </label> {
                         typeof attribute.value == "string" ?
-                        <form onSubmit={(e)=>{
-                            e.preventDefault()
-                            changeValue(currentAttribute, e.target[0].value)
-                        }}>
-                            <input key={Math.random()} type='text' className='attribute-value'/>
-                            <input type='submit'/>
-                        </form>
+                        <input type="text" value={value} onChange={handleValue}/>
 
                             :
                             <select onChange={(e)=>{
                                 changeValue(attribute, e.target.value)
                             }}>
                                 {
-                                    attribute.value.map((val, i) => {
-                                        return <option key={i} className='attribute-value'>{val}</option>
+                                    attribute.value.map((val) => {
+                                        return <option key={Math.random()} className='attribute-value'>{val}</option>
                                     })
                                 }
                             </select>

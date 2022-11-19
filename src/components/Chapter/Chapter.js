@@ -6,6 +6,7 @@ import { useContext, useState, useEffect } from 'react'
 import appContext from '../../context/context'
 
 import Attributes from './Attributes'
+import Out from './Out'
 
 const Chapter = () => {
     const params = useParams()
@@ -14,55 +15,63 @@ const Chapter = () => {
     const [syntax, setSyntax] = useState(currentChapter.syntax)
     const [attributes, setAttributes] = useState([])
 
-    var x;
+    useEffect(()=>{
+        setSyntax(currentChapter.syntax)
+        setAttributes([])
+    },[params])
 
-    useEffect(() => {
-        x = ""
-        attributes.forEach((attribute) => {
-            x = x + ` ${attribute.attribute} = '${typeof attribute.value == 'string' ? attribute.value : attribute.value[0]}'`
+
+    function updateSyntax(newAttributes) {
+        setSyntax((prev) => {
+            let addedAttributes = " "
+            let current = currentChapter.syntax
+            let openingTag = current.slice(0, current.indexOf(">"))
+            let closingTag = current.slice(current.indexOf(">"), -1)
+
+            newAttributes.forEach((att) => {
+                if (typeof att.value == "string") {
+                    addedAttributes = addedAttributes + att.attribute + " = " + "'" + att.value + "' "
+                } else {
+                    addedAttributes = addedAttributes + att.attribute + " = " + "'" + att.value[0] + "' "
+                }
+            })
+            if(closingTag){
+                return openingTag + addedAttributes + closingTag
+            }else{
+                return openingTag + addedAttributes + ">"
+            }
         })
-        let splitted = currentChapter.syntax.split(">")
-        let y = splitted[0] + x + ">" + splitted[1] + ">"
-        setSyntax(y)
-    }, [attributes])
-
+    }
 
     function addAttribute(attribute) {
-        let a = attributes.findIndex((attr) => {
-            return attribute.attribute == attr.attribute
+        let newAttributes = [...attributes, attribute];
+        setAttributes(newAttributes)
+        updateSyntax(newAttributes)
+    }
+
+    function removeAttribute(attribute) {
+        let x = attributes.find((a) => {
+            return a.attribute == attribute.attribute
         })
-        if (a < 0) {
-            setAttributes(prev => [...prev, attribute])
-        } else {
-            setAttributes((prev) => {
-                return prev.filter((attr) => {
-                    return attribute.attribute != attr.attribute
-                })
-            })
-        }
+
+        let newAttributes = attributes.filter((a) => {
+            return a.attribute != attribute.attribute
+        })
+
+        setAttributes(newAttributes)
+        updateSyntax(newAttributes)
 
     }
 
     function changeValue(attribute, value) {
 
-        let a = attributes.findIndex((attr) => {
-            return attribute.attribute === attr.attribute
+        let currentAttributeIndex = attributes.findIndex((a, i) => {
+            return a.attribute == attribute.attribute
         })
-
-        let x = attributes[a]
-        x.value = value
-        setAttributes((prev) => {
-            let y = prev
-            y[a] = x
-         return [...y]
-        })
-
+        let newAttributes = [...attributes]
+        newAttributes[currentAttributeIndex].value = value
+        updateSyntax(newAttributes)
     }
-
-
-
-
-
 
     return (
         <div className='Current-chapter'>
@@ -93,19 +102,29 @@ const Chapter = () => {
 
                     <button className='btn try'>Try Code Editor</button>
                 </div>
+
+                <div className='Current-chapter-container'>
+                    <Out syntax={syntax}/>
+                </div>
             </div>
 
             <div className='Current-chapter-container'>
                 <h2>
                     Attributes
                 </h2>
-                <div className='flex attributes-wrapper'>
-                    {
-                        currentChapter.attributes.map((attribute, i) => {
-                            return <Attributes key={i} attribute={attribute} addAttribute={addAttribute} changeValue={changeValue} />
-                        })
-                    }
-                </div>
+                <a href="https://www.google.co.in/">ajbskaj</a>
+                {/* <p>All the universal attributes</p> */}
+                {
+                    currentChapter.attributes ?
+                    <div className='flex attributes-wrapper'>
+                        {
+                            currentChapter.attributes.map((attribute) => {
+                                return <Attributes key={attribute.attribute} attribute={attribute} addAttribute={addAttribute} changeValue={changeValue} removeAttribute={removeAttribute} />
+                            })
+                        }
+                    </div> :
+                    <p>This tag does not have any unique attributes</p>
+                }
             </div>
 
         </div>
