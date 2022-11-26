@@ -39,7 +39,7 @@ const Sidebar = () => {
                                 key={chapter.id}
                                 onClick={() => {
                                     navigateTo('learn/' + chapter.id)
-                                    setCurrentChapter(chapter)
+                                    // setCurrentChapter(chapter)
                                 }}
                             >{chapter.tag} - Tag</li>
                         })

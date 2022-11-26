@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react'
 import appContext from '../../context/context'
 
+import chapters from '../../data/chapters.json'
+
 import Attributes from './Attributes'
 import Out from './Out'
 
@@ -12,10 +14,15 @@ const Chapter = () => {
     const params = useParams()
 
     let currentChapter = useContext(appContext).currentChapter
+    let setCurrentChapter = useContext(appContext).setCurrentChapter
     const [syntax, setSyntax] = useState(currentChapter.syntax)
     const [attributes, setAttributes] = useState([])
 
     useEffect(()=>{
+        let x = chapters.find((x)=>{
+            return x.id == params.chapter
+        })
+        setCurrentChapter(x)
         setSyntax(currentChapter.syntax)
         setAttributes([])
     },[params])
