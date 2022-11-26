@@ -44,7 +44,7 @@
   {
     "id": "img-tag",
     "tag": "<img>",
-    "syntax": "<img/>",
+    "syntax": "<img>",
     "attributes" : [
       {
         "attribute" : "src",
