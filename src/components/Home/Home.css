@@ -7,3 +7,16 @@
     margin: 20px 0px;
 }
 
+.home-burger{
+    cursor: initial;
+    display:inline-flex;
+    /* border: 1px solid black; */
+    position: absolute;
+    margin-left: 2px;
+}
+
+.box p{
+    margin: 0;
+    padding: 0;
+}
+

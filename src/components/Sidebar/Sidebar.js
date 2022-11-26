@@ -13,7 +13,7 @@ const Sidebar = () => {
     let chapters = useContext(appContext).chapters
 
 
-    const [showSideBar, setShowSideBar] = useState(true)
+    const [showSideBar, setShowSideBar] = useState(false)
 
     return (
         <div className={showSideBar ? 'Sidebar' : 'Sidebar hidden'}>
@@ -39,6 +39,7 @@ const Sidebar = () => {
                                 key={chapter.id}
                                 onClick={() => {
                                     navigateTo('learn/' + chapter.id)
+                                    setShowSideBar(false)
                                     // setCurrentChapter(chapter)
                                 }}
                             >{chapter.tag} - Tag</li>
