@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/fabevy-learning-tool/static/css/main.1d34fb98.css",
-    "main.js": "/fabevy-learning-tool/static/js/main.1a2f1c22.js",
+    "main.css": "/fabevy-learning-tool/static/css/main.b99d0f6d.css",
+    "main.js": "/fabevy-learning-tool/static/js/main.487896b1.js",
     "static/js/787.eb975ecf.chunk.js": "/fabevy-learning-tool/static/js/787.eb975ecf.chunk.js",
     "index.html": "/fabevy-learning-tool/index.html",
-    "main.1d34fb98.css.map": "/fabevy-learning-tool/static/css/main.1d34fb98.css.map",
-    "main.1a2f1c22.js.map": "/fabevy-learning-tool/static/js/main.1a2f1c22.js.map",
+    "main.b99d0f6d.css.map": "/fabevy-learning-tool/static/css/main.b99d0f6d.css.map",
+    "main.487896b1.js.map": "/fabevy-learning-tool/static/js/main.487896b1.js.map",
     "787.eb975ecf.chunk.js.map": "/fabevy-learning-tool/static/js/787.eb975ecf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d34fb98.css",
-    "static/js/main.1a2f1c22.js"
+    "static/css/main.b99d0f6d.css",
+    "static/js/main.487896b1.js"
   ]
 }
