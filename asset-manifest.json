@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/fabevy-learning-tool/static/css/main.1d34fb98.css",
-    "main.js": "/fabevy-learning-tool/static/js/main.7ff6c615.js",
+    "main.js": "/fabevy-learning-tool/static/js/main.1a2f1c22.js",
     "static/js/787.eb975ecf.chunk.js": "/fabevy-learning-tool/static/js/787.eb975ecf.chunk.js",
     "index.html": "/fabevy-learning-tool/index.html",
     "main.1d34fb98.css.map": "/fabevy-learning-tool/static/css/main.1d34fb98.css.map",
-    "main.7ff6c615.js.map": "/fabevy-learning-tool/static/js/main.7ff6c615.js.map",
+    "main.1a2f1c22.js.map": "/fabevy-learning-tool/static/js/main.1a2f1c22.js.map",
     "787.eb975ecf.chunk.js.map": "/fabevy-learning-tool/static/js/787.eb975ecf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1d34fb98.css",
-    "static/js/main.7ff6c615.js"
+    "static/js/main.1a2f1c22.js"
   ]
 }
